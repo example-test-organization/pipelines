@@ -34,6 +34,10 @@ def get_pod_statuses():
                 else:
                     waiting_messages.append(f'Waiting on Container: {status.name} - {status.state.waiting.reason}')
         statuses[pod_name] = (pod_status, ready, total, waiting_messages)
+        if pod_name.startswith("ml-pipeline-"):
+            logs = v1.read_namespaced_pod_log(pod_name, namespace)
+            print("apiserver logs: ")
+            print(logs)
     return statuses
 
 

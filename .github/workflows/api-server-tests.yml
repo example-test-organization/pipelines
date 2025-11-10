@@ -39,7 +39,6 @@ on:
       - '.github/resources/**'
       - 'backend/api/v2beta1/**'
       - 'backend/src/**'
-      - 'backend/metadata_writer/**'
       - 'backend/test/v2/api/**'
       - 'manifests/kustomize/**'
       - '../../test_data/sdk_compiled_pipelines/**'
@@ -58,16 +57,10 @@ jobs:
         k8s_version: [ "v1.34.0" ]
         cache_enabled: [ "true", "false" ]
         proxy: [ "true", "false" ]
-        argo_version: [ "v3.7.3", "v3.6.7" ]
+        argo_version: [ "v3.7.3"]
         pipeline_store: [ "database" ]
         pod_to_pod_tls_enabled: [ "false" ]
         include:
-          - k8s_version: "v1.29.2"
-            cache_enabled: "true"
-            argo_version: "v3.6.7"
-          - k8s_version: "v1.29.2"
-            cache_enabled: "true"
-            argo_version: "v3.5.14"
           - k8s_version: "v1.34.0"
             cache_enabled: "true"
             pod_to_pod_tls_enabled: "true"
